@@ -24,6 +24,13 @@ namespace levelgenerationtest
             this.numericUpDown3.ValueChanged += button1_Click;
 
             this.button2.Click += button2_Click;
+
+            this.button3.Click += button3_Click;
+        }
+
+        void button3_Click(object sender, EventArgs e)
+        {
+            this.textBox3.Text = new town().ToString();
         }
 
         void button2_Click(object sender, EventArgs e)

@@ -79,19 +79,24 @@ namespace levelgenerationtest
 
         Random rand;
 
-        List<Rect> rooms;
+        protected List<Rect> rooms;
 
         public regularlevel()
         {
             rand = new Random();
             rooms = new List<Rect>();
 
-            split(new Rect(0 + Level.EDGEBUFFER, 0 + Level.EDGEBUFFER, WIDTH - 1 - Level.EDGEBUFFER, HEIGHT - 1 - Level.EDGEBUFFER));
+            initialsplit();
 
             for (int n = 0; n < rooms.Count; n++)
             {
                 fillroom(rooms[n]);
             }
+        }
+
+        protected virtual void initialsplit()
+        {
+            split(new Rect(0 + Level.EDGEBUFFER, 0 + Level.EDGEBUFFER, WIDTH - 1 - Level.EDGEBUFFER, HEIGHT - 1 - Level.EDGEBUFFER));
         }
 
         int charindex = 65;
@@ -107,7 +112,14 @@ namespace levelgenerationtest
                 {
                     pos = x + y * WIDTH;
 
-                    grid[pos] = c;
+                    if (grid[pos] >= 33 && grid[pos] <= 122)
+                    {
+                        grid[pos] = '!';
+                    }
+                    else
+                    {
+                        grid[pos] = c;
+                    }
                 }
             }
 
@@ -115,6 +127,16 @@ namespace levelgenerationtest
             if (charindex == 91)
             {
                 charindex = 97;
+            }
+
+            if (charindex == 123)
+            {
+                charindex = 48;
+            }
+
+            if (charindex == 58)
+            {
+                charindex = 65;
             }
         }
 
