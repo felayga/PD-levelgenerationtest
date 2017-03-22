@@ -33,45 +33,6 @@ namespace levelgenerationtest
 {
     public class regularlevel : Level
     {
-        public class Rect
-        {
-            public int left;
-            public int top;
-            public int right;
-            public int bottom;
-
-            public Rect(int left, int top, int right, int bottom)
-            {
-                this.left = left;
-                this.top = top;
-                this.right = right;
-                this.bottom = bottom;
-            }
-
-            public Rect(Rect source)
-            {
-                this.left = source.left;
-                this.top = source.top;
-                this.right = source.right;
-                this.bottom = source.bottom;
-            }
-
-            public int width()
-            {
-                return right - left;
-            }
-
-            public int height()
-            {
-                return bottom - top;
-            }
-
-            public int square()
-            {
-                return (right - left) * (bottom - top);
-            }
-        }
-
         protected int minRoomSize = 7; //original=7
         protected int maxRoomSize = 13; //original=9 -> 13
 

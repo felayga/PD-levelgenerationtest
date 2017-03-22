@@ -43,6 +43,76 @@ namespace levelgenerationtest
             this.offset = offset;
 
             simplexplain();
+            validatormap();
+            validatorvalidate();
+        }
+
+        public bool fullylinked { private set; get; }
+
+        private void validatorvalidate()
+        {
+            fullylinked = true;
+
+            int pos = 0;
+
+            for (int y = 0; y < HEIGHT; y++)
+            {
+                for (int x = 0; x < WIDTH; x++)
+                {
+                    if (grid[pos] == ' ')
+                    {
+                        fullylinked = false;
+                        return;
+                    }
+
+                    pos++;
+                }
+            }
+
+            fullylinked = true;
+        }
+
+        private void validatormap()
+        {
+            int startx = -1;
+            int starty = -1;
+
+            int pos = 0;
+
+            for (int y = 0; y < HEIGHT; y++)
+            {
+                for (int x = 0; x < WIDTH; x++)
+                {
+                    if (grid[pos] == ' ')
+                    {
+                        startx = x;
+                        starty = y;
+
+                        x = WIDTH;
+                        y = HEIGHT;
+                        break;
+                    }
+
+                    pos++;
+                }
+            }
+
+            validatorrecurse(pos);
+        }
+
+        private static int[] neighbors8 = new int[] { -1, 1, -WIDTH, WIDTH, -1-WIDTH, -1+WIDTH, 1-WIDTH, 1+WIDTH };
+
+        private void validatorrecurse(int pos)
+        {
+            grid[pos] = '!';
+
+            for (int n = 0; n < neighbors8.Length; n++)
+            {
+                if (grid[pos + neighbors8[n]] == ' ')
+                {
+                    validatorrecurse(pos + neighbors8[n]);
+                }
+            }
         }
 
         private static double noisefunc(mines what, int x, int y)

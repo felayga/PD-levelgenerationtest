@@ -17,9 +17,9 @@ namespace levelgenerationtest
 
             Rect bigroom = new Rect(
                 (WIDTH - EDGEBUFFER * 2) * 3 / 10 + EDGEBUFFER,
-                EDGEBUFFER + 1,
+                EDGEBUFFER - 1,
                 (WIDTH - EDGEBUFFER * 2) * 7 / 10 + EDGEBUFFER,
-                EDGEBUFFER + bigroomheight + 2
+                EDGEBUFFER + bigroomheight + 3 + 1
             );
 
             Rect topstores = new Rect(
@@ -39,18 +39,18 @@ namespace levelgenerationtest
             split(bottomstores);
 
             Rect midleftstores = new Rect(
-                bigroom.left + 2,
-                topstores.bottom + 2,
+                bigroom.left + 3,
+                topstores.bottom + 3,
                 bigroom.left + bigroom.width() / 3,
-                bottomstores.top - 2
+                bottomstores.top - 3
             );
             split(midleftstores);
 
             Rect midrightstores = new Rect(
                 bigroom.right - bigroom.width() / 3,
-                topstores.bottom + 2,
-                bigroom.right - 2,
-                bottomstores.top - 2
+                topstores.bottom + 3,
+                bigroom.right - 3,
+                bottomstores.top - 3
             );
             split(midrightstores);
 

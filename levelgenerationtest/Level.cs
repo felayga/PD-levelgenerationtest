@@ -38,6 +38,12 @@ namespace levelgenerationtest
         public const int LENGTH = WIDTH * HEIGHT;
         public const int EDGEBUFFER = 7;
 
+        public static readonly int[] NEIGHBOURS4 = {-WIDTH, +1, +WIDTH, -1};
+        public static readonly int[] NEIGHBOURS4DIAGONAL = {+1 - WIDTH, +1 + WIDTH, -1 + WIDTH, -1 - WIDTH};
+        public static readonly int[] NEIGHBOURS5 = {0, -WIDTH, +1, +WIDTH, -1};
+        public static readonly int[] NEIGHBOURS8 = {-WIDTH, +1 - WIDTH, +1, +1 + WIDTH, +WIDTH, -1 + WIDTH, -1, -1 - WIDTH};
+        public static readonly int[] NEIGHBOURS9 = {0, -WIDTH, +1 - WIDTH, +1, +1 + WIDTH, +WIDTH, -1 + WIDTH, -1, -1 - WIDTH};
+
         public char[] grid = new char[LENGTH];
 
         public Level()
